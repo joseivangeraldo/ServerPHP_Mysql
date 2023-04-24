@@ -1,7 +1,11 @@
-Abaixo anotações que são pertinentes para a instalação de aplicações rodando em conjunto,
+<html>
+  <head></head>
+  <body>
+    
+<p>Abaixo anotações que são pertinentes para a instalação de aplicações rodando em conjunto,
 montado em três containers e interligados entre si.
-PHP, Apache e Mysql.
-Primeiro é preciso criar um arquivo .Yml, que será orquestrado pelo docker-compose"></docker-compose>
+PHP, Apache e Mysql.</p>
+<p>Primeiro é preciso criar um arquivo .Yml, que será orquestrado pelo docker-compose"></p>
 services:
   db:
     image: mysql:latest
@@ -134,3 +138,5 @@ while($record = mysqli_fetch_assoc($result))
 ?>
 
 gitpod /workspace/DevOps/Lamp-Server (master) $ docker-compose exec www docker-php-ext-install pdo pdo_mysql mysqli
+</body>
+</html>
