@@ -1,0 +1,136 @@
+Abaixo anotações que são pertinentes para a instalação de aplicações rodando em conjunto,
+montado em três containers e interligados entre si.
+PHP, Apache e Mysql.
+Primeiro é preciso criar um arquivo .Yml, que será orquestrado pelo docker-compose"></docker-compose>
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: lamp_demo
+      MYSQL_USER: lamp_demo
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d"
+    networks:
+      - lamp-docker
+  www:
+    depends_on:
+      - db
+    image: php:8.1.1-apache
+    volumes:
+      - "./:/var/www/html"
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - lamp-docker
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    networks:
+      - lamp-docker
+networks:
+  lamp-docker:
+    driver: bridge
+
+version: '2'
+services:
+  www:
+    image: php:8.1.18-apache-bullseye
+    volumes:
+      - "./:/var/www/html"
+    ports:
+      - 80:80
+      - 443:
+      
+
+gitpod /workspace/DevOps (main) $ git init
+Reinitialized existing Git repository in /workspace/DevOps/.git/
+gitpod /workspace/DevOps (main) $ git add .
+gitpod /workspace/DevOps (main) $ git commit -m "Alterado e acrescentado"
+[main f16ac4a] Alterado e acrescentado
+ 7 files changed, 135 insertions(+), 1 deletion(-)
+ create mode 100644 Comandos_Git.txt
+ create mode 100644 Lamp-Server/anotacoes.txt
+ create mode 100644 Lamp-Server/db/dump.sql
+ create mode 100644 Lamp-Server/php_info.php
+ create mode 100644 docker-composeHelp.txt
+ delete mode 100644 teste.txt
+gitpod /workspace/DevOps (main) $ git push 
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (9/9), 2.64 KiB | 2.64 MiB/s, done.
+Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://gitlab.com/devops1960215/DevOps.git
+   6b32193..f16ac4a  main -> main
+gitpod /workspace/DevOps (main) $       
+
+git commit -S -m "YOUR_COMMIT_MESSAGE"
+
+
+FROM ubuntu  → pega a imagem do ubuntu
+RUN apt-get update   → atualiza o sistema
+RUN apt-get -y install apache2   → faz a instalação automatica
+ADD . /var/www/html → adiciona um diretorio a maquina local
+ENTRYPOINT apachectl -D FOREGROUND   → Ele ja Inicia o Apache
+ENV name Nome_Ambiente → cria a variavel de ambiente
+ 
+
+
+FROM php:7.4-fpm
+# Arguments defined in docker-compose.yml
+ARG user
+ARG uid
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Create system user to run Composer and Artisan Commands
+RUN useradd -G www-data,root -u $uid -d /home/$user $user
+RUN mkdir -p /home/$user/.composer && \
+    chown -R $user:$user /home/$user
+# Set working directory
+WORKDIR /var/www
+USER $user
+
+
+<?php
+$connect = mysqli_connect('db','lamp_demo','password','lamp_demo')
+    or die ('Não foi possivel conectar');
+
+$query = 'SELECT * FROM blog';
+$result = mysqli_query($connect, $query);
+
+echo '<h1>MySQL Content:</h1>';
+
+while($record = mysqli_fetch_assoc($result))
+{
+    echo '<h2>'.$record['title'].'</h2>';
+    echo '<p>'.$record['content'].'</p>';
+    echo 'Posted: '.$record['date'];
+    echo '<hr>';
+}
+
+?>
+
+gitpod /workspace/DevOps/Lamp-Server (master) $ docker-compose exec www docker-php-ext-install pdo pdo_mysql mysqli
