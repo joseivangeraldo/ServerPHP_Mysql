@@ -1,19 +1,16 @@
-## OpenCV: Open Source Computer Vision Library
+## LAMP Server Apache: Montado em um Docker Container
 
-### Resources
+### Recursos Necessarios
 
-* Homepage: <https://opencv.org>
-* Courses: <https://opencv.org/courses>
-* Docs: <https://docs.opencv.org/4.x/>
-* Q&A forum: <https://forum.opencv.org>
-* previous forum (read only): <http://answers.opencv.org>
-* Issue tracking: <https://github.com/opencv/opencv/issues>
-* Additional OpenCV functionality: <https://github.com/opencv/opencv_contrib> 
-
+* Docker Hub: <https://hub.docker.com/>
+* Apache Docker Imagem oficial: <https://hub.docker.com/_/httpd>
+* Mysql Docker imagem oficial: <https://hub.docker.com/_/mysql>
+* Documentação PHP: <https://www.php.net>
+* PHPMyadmin Docker imagem oficial: <https://hub.docker.com/_/phpmyadmin>
 
 ### Contributing
 
-Please read the [contribution guidelines](https://github.com/opencv/opencv/wiki/How_to_contribute) before starting work on a pull request.
+Para maiores informações [Leia-me](https://github.com/joseivangeraldo/ServerPHP_Mysql/edit/main/README.md) antes de requisitar um pull.
 
 #### Summary of the guidelines:
 
