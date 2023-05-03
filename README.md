@@ -112,6 +112,7 @@ O docker compose, que orquestrará todas as dependencias do ambiente, e montará
    lamp-docker: 
      driver: bridge
  ```
+Tomar muito cuidado com a digitação, pois  ele necessita ser fortemente idêntico, então espaços, quebra de linhas, devem ser idênticos, se necessário é melhor instalar a extensão para docker compose que o Visual Studio possui.
  Em COPY , copiamos tudo que esta na pasta e coloca na pasta aonde são publicada as paginas web do container.
  Nas duas ultimas linhas estamos atualizando a distribuição Linux, em seguida instalando o editor VIM, caso necessitar de editar algum código no Shell.
 
