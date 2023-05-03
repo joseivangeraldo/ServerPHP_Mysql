@@ -120,7 +120,7 @@ Vamos , importante estar dentro do diretório que foi criado, e o Dockerfile est
 ```
 docker-compose build .
 ```
-Detalhe o sinal de ponto, ao final, informar para pegar tudo que esta dentro do diretório.
+Detalhe o sinal de ponto, ao final, fala que a pasta de trabalho é a propria aonde está o arquivo docker-compose.
 É colocado uma tag de identificação para melhot localização, com -t , pode ser o nome de sua preferência. 
 
 Será mostrado mensagens da evolução do processo como abaixo:
