@@ -1,71 +1,90 @@
-How to Write a Good README – a Step by Step Guide
-A very important thing to note is that there's not one right way to structure a good README. But there is one very wrong way, and that is to not include a README at all.
-
-From research and studying various README files, for sure there are some best practices that I have found. And that's what I will be sharing. As I usually tell my self:
-
-Every day is a learning day.
-
-So as you progress and advance in your career, you will develop your own ideas about what makes a good README and how to improve on it. Perhaps you'll even come up with your own unique guide.
-
-Before we get started, it is also important to note that when you're writing your project's README, it should be able to answer the what, why, and the how of the project.
-
-Here are some guide questions that will help you out:
-
-What was your motivation?
-Why did you build this project?
-What problem does it solve?
-What did you learn?
-What makes your project stand out?
-If your project has a lot of features, consider adding a "Features" section and listing them here.
-What to Include in your README
-1. Project's Title
-This is the name of the project. It describes the whole project in one sentence, and helps people understand what the main goal and aim of the project is.
-
-2. Project Description
-This is an important component of your project that many new developers often overlook.
-
-Your description is an extremely important aspect of your project. A well-crafted description allows you to show off your work to other developers as well as potential employers.
-
-The quality of a README description often differentiates a good project from a bad project. A good one takes advantage of the opportunity to explain and showcase:
-
-What your application does,
-Why you used the technologies you used,
-Some of the challenges you faced and features you hope to implement in the future.
-3. Table of Contents (Optional)
-If your README is very long, you might want to add a table of contents to make it easy for users to navigate to different sections easily. It will make it easier for readers to move around the project with ease.
-
-4. How to Install and Run the Project
-If you are working on a project that a user needs to install or run locally in a machine like a "POS", you should include the steps required to install your project and also the required dependencies if any.
-
-Provide a step-by-step description of how to get the development environment set and running.
-
-5. How to Use the Project
-Provide instructions and examples so users/contributors can use the project. This will make it easy for them in case they encounter a problem – they will always have a place to reference what is expected.
-
-You can also make use of visual aids by including materials like screenshots to show examples of the running project and also the structure and design principles used in your project.
-
-Also if your project will require authentication like passwords or usernames, this is a good section to include the credentials.
-
-6. Include Credits
-If you worked on the project as a team or an organization, list your collaborators/team members. You should also include links to their GitHub profiles and social media too.
-
-Also, if you followed tutorials or referenced a certain material that might help the user to build that particular project, include links to those here as well.
-
-This is just a way to show your appreciation and also to help others get a first hand copy of the project.
-
-7. Add a License
-For most README files, this is usually considered the last part. It lets other developers know what they can and cannot do with your project.
-
-We have different types of licenses depending on the kind of project you are working on. Depending on the one you will choose it will determine the contributions your project gets.
-
-The most common one is the GPL License which allows other to make modification to your code and use it for commercial purposes. If you need help choosing a license, use check out this link: https://choosealicense.com/
-
-Up to this point what we have covered are the minimum requirements for a good README. But you might also want to consider adding the following sections to make it more eye catching and interactive.
-
-Additional README Sections
-8. Badges
-Badges aren't necessary, but using them is a simple way of letting other developers know that you know what you're doing.
-
-Having this section can also be helpful to help link to important tools and also show some simple stats about your project like the number of forks, contributors, open issues etc...
-
-Below is a screenshot from one of my projects that shows how you can make use of badges:
+FROM httpd:2.4  
+ COPY ./ /usr/local/apache2/htdocs/ 
+ RUN ["apt-get", "update"]  
+ RUN ["apt-get", "install", "-y", "vim"] 
+  
+ docker build .  
+ docker build -t apache-docker . --> coloca uma tag para melhot identificação 
+  docker run -dit --name NOME_BATISMO_CONTAINER -p 80:80 NOME_IMAGEM  
+  docker stop ID_CONTAINER  
+  docker start ID_CONTAINER  
+  
+  
+  
+ @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git init 
+ Initialized empty Git repository in /workspaces/html_css/ServerApache/.git/ 
+ @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git checkout 
+ fatal: You are on a branch yet to be born 
+ @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git status 
+ On branch main 
+  
+ No commits yet 
+  
+ Untracked files: 
+   (use "git add <file>..." to include in what will be committed) 
+         Dockerfile 
+         index.html 
+  
+ nothing added to commit but untracked files present (use "git add" to track) 
+ @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git add . 
+ @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git commit -a -m "nova demanda" 
+ @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git push 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git init 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git add . 
+  
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git pull 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git init 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git add . 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git push 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git merge main 
+  
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git remote add origin https://github.com/joseivangeraldo/html_css.git 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git branch -M main 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git push -u origin main 
+  
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git add . 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git status 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git restore --staged ServerApache 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git restore --staged anotacoes.txt 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git status 
+  
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git add . 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git status 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git commit -a -m "Demanda" 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git status 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ git push 
+  
+ https://docs.docker.com/develop/develop-images/dockerfile_best-practices/ 
+ https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image 
+  
+ Step 4: Commit Changes to Image 
+ Finally, create a new image by committing the changes using the following syntax: 
+  
+ sudo docker commit [CONTAINER_ID] [new_image_name] 
+  
+ Therefore, in our example it will be: 
+  
+ sudo docker commit deddd39fa163 ubuntu-nmap 
+  
+ Where deddd39fa163 is the CONTAINER ID and ubuntu-nmap is the name of the new image. 
+  
+ docker command to commit changes to image 
+  
+ Your newly created image should now be available on the list of local images. You can verify by checking the image list again: 
+  
+ sudo docker images 
+  
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ docker ps 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ docker commit 1e936a216edd apache-1.0 
+  
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ docker images 
+ REPOSITORY      TAG       IMAGE ID       CREATED         SIZE 
+ apache-1.0      latest    f6c07e87a702   8 seconds ago   199MB 
+ apache-docker   latest    d0b5d542ef58   14 hours ago    199MB 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ 
+  
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ docker ps -a 
+ CONTAINER ID   IMAGE          COMMAND              CREATED        STATUS                          PORTS     NAMES 
+ 1e936a216edd   d0b5d542ef58   "httpd-foreground"   13 hours ago   Exited (0) About a minute ago             apache-docker 
+ @joseivangeraldo ➜ /workspaces/html_css (main) $ docker rm 1e936a216edd 
+ 1e936a216edd
