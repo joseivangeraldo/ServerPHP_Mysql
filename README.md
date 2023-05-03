@@ -68,16 +68,48 @@ Segue um modelo básico abaixo:
 
 Crie um arquivo chamado docker-compose.yml. Tem de ter este nome, idêntico assim, pois se for diferente não  funcionará a geração da imagem. O Codespace GitHub e Gitpod já vem com Visual Studio configurado, então  para criação e edição é só digitar:
 ```
-$ code 
+$ code docker-compose.yml
 ```
 
-Este Dockerfile, que orquestrará todas as dependencias do ambiente para a rodar a imagem Docker.
-Seque a sintaxe do modelo:
-```
- FROM httpd:2.4  
- COPY ./ /usr/local/apache2/htdocs/ 
- RUN ["apt-get", "update"]  
- RUN ["apt-get", "install", "-y", "vim"]
+O docker compose, que orquestrará todas as dependencias do ambiente, e montará  todas as imagens necessárias para a rodar as imagens Docker.Apache, PHP, MySql e PHPMyadmin. Sintaxe do arquivo:
+``` 
+ services: 
+   db: 
+     image: mysql:latest 
+     environment: 
+       MYSQL_DATABASE: lamp_demo 
+       MYSQL_USER: lamp_demo 
+       MYSQL_PASSWORD: password 
+       MYSQL_ALLOW_EMPTY_PASSWORD: 1 
+     volumes: 
+       - "./db:/docker-entrypoint-initdb.d" 
+     networks: 
+       - lamp-docker 
+   www: 
+     depends_on: 
+       - db 
+     image: php:8.1.1-apache 
+     volumes: 
+       - "./:/var/www/html" 
+     ports: 
+       - 80:80 
+       - 443:443 
+     networks: 
+       - lamp-docker 
+   phpmyadmin: 
+     depends_on: 
+       - db 
+     image: phpmyadmin/phpmyadmin 
+     ports: 
+       - 8001:80 
+     environment: 
+       - PMA_HOST=db 
+       - PMA_PORT=3306 
+     networks: 
+       - lamp-docker 
+ networks: 
+   lamp-docker: 
+     driver: bridge
  ```
  Em COPY , copiamos tudo que esta na pasta e coloca na pasta aonde são publicada as paginas web do container.
  Nas duas ultimas linhas estamos atualizando a distribuição Linux, em seguida instalando o editor VIM, caso necessitar de editar algum código no Shell.
@@ -190,44 +222,7 @@ aperte a tecla esc, para ter certeza que está no menu básico. Em seguida apert
 root@1e936a216edd:/usr/local/apache2/htdocs# 
 
 > [Topo](#ancora)
-version: '3' 
- services: 
-   db: 
-     image: mysql:latest 
-     environment: 
-       MYSQL_DATABASE: lamp_demo 
-       MYSQL_USER: lamp_demo 
-       MYSQL_PASSWORD: password 
-       MYSQL_ALLOW_EMPTY_PASSWORD: 1 
-     volumes: 
-       - "./db:/docker-entrypoint-initdb.d" 
-     networks: 
-       - lamp-docker 
-   www: 
-     depends_on: 
-       - db 
-     image: php:8.1.1-apache 
-     volumes: 
-       - "./:/var/www/html" 
-     ports: 
-       - 80:80 
-       - 443:443 
-     networks: 
-       - lamp-docker 
-   phpmyadmin: 
-     depends_on: 
-       - db 
-     image: phpmyadmin/phpmyadmin 
-     ports: 
-       - 8001:80 
-     environment: 
-       - PMA_HOST=db 
-       - PMA_PORT=3306 
-     networks: 
-       - lamp-docker 
- networks: 
-   lamp-docker: 
-     driver: bridge
+
 
 
 gitpod /workspace/DevOps (main) $ git init
