@@ -45,13 +45,13 @@ REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 
 Após crie a pasta de trabalho:
 ```
-$ mkdir ServerApache
+$ mkdir LampServer
 ```
 O nome do diretório pode ser este ou qualquer outro de sua preferência.
 
 Depois entre dentro deste diretório:
 ```
-$ cd ServerApache
+$ cd LampServer
 ```
 Criar uma página chamada index.html básica dentro deste diretório, para verificar que ocorreu uma instalação perfeita.
 Segue um modelo básico abaixo:
@@ -66,10 +66,9 @@ Segue um modelo básico abaixo:
 </html>
 ```
 
-Crie um arquivo Dockerfile. O Codespace GitHub e Gitpod já vem com Visual Studio configurado.
-Tem de ter este nome 'Dockerfile' sem nenhuma extensão, assim digite:
+Crie um arquivo chamado docker-compose.yml. Tem de ter este nome, idêntico assim, pois se for diferente não  funcionará a geração da imagem. O Codespace GitHub e Gitpod já vem com Visual Studio configurado, então  para criação e edição é só digitar:
 ```
-$ code Dockerfile
+$ code 
 ```
 
 Este Dockerfile, que orquestrará todas as dependencias do ambiente para a rodar a imagem Docker.
