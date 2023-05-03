@@ -8,7 +8,3 @@
 * [Documentação PHP:](https://www.php.net)
 * [PHPMyadmin Docker imagem oficial:](https://hub.docker.com/_/phpmyadmin)
 
-### Contribuição
-
-Para maiores informações [Leia-me](https://github.com/joseivangeraldo/ServerPHP_Mysql/edit/main/README.md) antes de requisitar um pull.
-
