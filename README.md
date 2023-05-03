@@ -113,12 +113,12 @@ O docker compose, que orquestrará todas as dependencias do ambiente, e montará
      driver: bridge
  ```
 Tomar muito cuidado com a digitação, pois  ele necessita ser fortemente idêntico, então espaços, quebra de linhas, devem ser idênticos, se necessário é melhor instalar a extensão para docker compose que o Visual Studio possui.
- Em COPY , copiamos tudo que esta na pasta e coloca na pasta aonde são publicada as paginas web do container.
- Nas duas ultimas linhas estamos atualizando a distribuição Linux, em seguida instalando o editor VIM, caso necessitar de editar algum código no Shell.
+ Em COPY , copiamos tudo que esta na pasta e colocar na pasta aonde são publicada as paginas web do container.
 
-Montar a Imagem, importante estar dentro do diretório que foi criado, e o Dockerfile estar dentro do mesmo diretório:
+
+Vamos , importante estar dentro do diretório que foi criado, e o Dockerfile estar dentro do mesmo diretório:
 ```
-docker build -t apache-docker .
+docker-compose build .
 ```
 Detalhe o sinal de ponto, ao final, informar para pegar tudo que esta dentro do diretório.
 É colocado uma tag de identificação para melhot localização, com -t , pode ser o nome de sua preferência. 
