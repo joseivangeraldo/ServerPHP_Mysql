@@ -26,6 +26,7 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Docker](https://www.docker.com/)
 - [Docker Hub](https://hub.docker.com/)
 - [HTML](https://www.w3.org/html/)
+- [MySql](https://www.mysql.com/)
 - [Visual Studio](https://expo.io](https://code.visualstudio.com/docs)/)
 >[Topo](#ancora)
 
