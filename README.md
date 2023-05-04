@@ -102,7 +102,7 @@ services:
       - db
     image: php:8.1.1-apache
     volumes:
-     !- "/workspaces/ServerPHP_Mysql/LampServer/WebPage:/var/www/html"
+    ! - "/workspaces/ServerPHP_Mysql/LampServer/WebPage:/var/www/html"
     ports:
       - 80:80
       - 443:443
