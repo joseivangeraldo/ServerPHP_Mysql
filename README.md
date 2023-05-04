@@ -138,7 +138,7 @@ Então começará a montagem das imagens,volumes e suas dependências, se não o
 configuradas, um alerta vai aparecer do codespace, se quiser pode fechar a janela. 
 ![Imagem que aparece](https://github.com/joseivangeraldo/html_css/blob/main/images/Port_open_codespace.jpg)
 
-No menu acima, da janela do terminal, te.os a opção ports, aonde temos as portas que foram carregadas seguindo esta composição:
+No menu acima, da janela do terminal, temos a opção ports, aonde temos as portas que foram carregadas seguindo esta composição:
 
 ### Configuração das portas
 
