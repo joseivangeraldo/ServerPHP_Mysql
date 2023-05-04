@@ -125,12 +125,16 @@ Dentro deste diretório criar uma arquivo básico chamado index.html. Só para c
 	</body>
 </html>
 ```
-Após subir o ambiente com o Docker compose:
+Vamos sair deste diretório e voltar aonde esta o docker-compose.yml:
+Dentro deste diretório criar uma arquivo básico chamado index.html. Só para conferir se funcionou corretamente a geração do ambiente.
+```
+$ cd ..
+```
+Agora que estamos no diretório do arquivo docker-compose, vamos subir o ambiente:
 ```
 $ docker-compose up -d
 ```
-O -d significa 'detach' inicia os containers em background, e permite eles funcionarem.
-Detalhe o sinal de ponto, ao final, fala que a pasta de trabalho é a propria aonde está o arquivo docker-compose.
+O -d significa 'detach' inicia os containers em background, e permite eles funcionarem, liberando o console para trabalhar.
 
 ################ DOCKER COMPOSE ########################
 gitpod /workspace/DevOpsTraining/compose (main) $ ls
