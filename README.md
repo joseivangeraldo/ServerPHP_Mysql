@@ -2,14 +2,16 @@
 
 ### Recursos Necessarios
 
-* [Docker Hub:](https://hub.docker.com/)
-* [Apache Docker Imagem oficial:](https://hub.docker.com/_/httpd)
-* [Mysql Docker imagem oficial:](https://hub.docker.com/_/mysql)
-* [Documentação PHP:](https://www.php.net)
-* [PHPMyadmin Docker imagem oficial:](https://hub.docker.com/_/phpmyadmin)
+- [Docker Hub:](https://hub.docker.com/)
+- [Apache Docker Imagem oficial:](https://hub.docker.com/_/httpd)
+- [Mysql Docker imagem oficial:](https://hub.docker.com/_/mysql)
+- [Documentação PHP:](https://www.php.net)
+- [PHPMyadmin Docker imagem oficial:](https://hub.docker.com/_/phpmyadmin)
 
 <a name="ancora"></a>
-# Indice 
+
+# Indice
+
 - [Tecnologia](#tecnologia)
 - [Instação do Ambiente](#instalacao)
 - [Acrescentar editar arquivos](#acrescentareditar)
@@ -27,105 +29,115 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - [Docker Hub](https://hub.docker.com/)
 - [HTML](https://www.w3.org/html/)
 - [MySql](https://www.mysql.com/)
-- [Visual Studio](https://expo.io](https://code.visualstudio.com/docs)/)
->[Topo](#ancora)
+- [Visual Studio](<https://expo.io](https://code.visualstudio.com/docs)/>)
+  > [Topo](#ancora)
 
 ## <a id="instalacao">🔨 Instalação do Ambiente</a>
- Instalação Imagem Docker:
+
+Instalação Imagem Docker:
 Obs: Estes exemplos foram formulados totalmente em um ambiente computacional dentro da nuvem. Particulamente no codespace do Github e Gitpod. Na atualidade são as melhores plataformas para isto, balanceando os custos e beneficios. Se você não conhece ou não sabe como acessa-los, [clique aqui.](https://docs.github.com/en/codespaces/developing-in-codespaces/opening-an-existing-codespace/)
 
-No codespace abra um terminal ou teclas use <kbd>Ctrl</kbd> + <kbd>'</kbd> 
+No codespace abra um terminal ou teclas use <kbd>Ctrl</kbd> + <kbd>'</kbd>
 Vamos ver antes se existem imagens criadas, só para verificar
+
 ```
 $ docker images
 ```
+
 Se não tiver nenhuma imagem docker será mostrado uma tabela vazia:
+
 ```
 REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
 ```
 
 Após crie a pasta de trabalho:
+
 ```
 $ mkdir LampServer
 ```
+
 O nome do diretório pode ser este ou qualquer outro de sua preferência.
 
 Depois entre dentro deste diretório:
+
 ```
 $ cd LampServer
 ```
+
 Criar uma página chamada index.html básica dentro deste diretório, para verificar que ocorreu uma instalação perfeita.
 Segue um modelo básico abaixo:
+
 ```html
 <html>
-    <head> </head>
-    <body>
-        <H1> 
-            A Pagina Inicial Funcionou
-        </H1>
-    </body>
+  <head> </head>
+  <body>
+    <h1>A Pagina Inicial Funcionou</h1>
+  </body>
 </html>
 ```
 
-Crie um arquivo chamado docker-compose.yml. Tem de ter este nome, idêntico assim, pois se for diferente não  funcionará a geração da imagem. O Codespace GitHub e Gitpod já vem com Visual Studio configurado, então  para criação e edição é só digitar:
+Crie um arquivo chamado docker-compose.yml. Tem de ter este nome, idêntico assim, pois se for diferente não funcionará a geração da imagem. O Codespace GitHub e Gitpod já vem com Visual Studio configurado, então para criação e edição é só digitar:
+
 ```
 $ code docker-compose.yml
 ```
 
-O docker compose, que orquestrará todas as dependencias do ambiente, e montará  todas as imagens necessárias para a rodar as imagens Docker.Apache, PHP, MySql e PHPMyadmin. Sintaxe do arquivo:
-```YAML 
- services: 
-   db: 
-     image: mysql:latest 
-     environment: 
-       MYSQL_DATABASE: lamp_demo 
-       MYSQL_USER: lamp_demo 
-       MYSQL_PASSWORD: password 
-       MYSQL_ALLOW_EMPTY_PASSWORD: 1 
-     volumes: 
-       - "./db:/docker-entrypoint-initdb.d" 
-     networks: 
-       - lamp-docker 
-   www: 
-     depends_on: 
-       - db 
-     image: php:8.1.1-apache 
-     volumes: 
-       - "./:/var/www/html" 
-     ports: 
-       - 80:80 
-       - 443:443 
-     networks: 
-       - lamp-docker 
-   phpmyadmin: 
-     depends_on: 
-       - db 
-     image: phpmyadmin/phpmyadmin 
-     ports: 
-       - 8001:80 
-     environment: 
-       - PMA_HOST=db 
-       - PMA_PORT=3306 
-     networks: 
-       - lamp-docker 
- networks: 
-   lamp-docker: 
-     driver: bridge
- ```
-Tomar muito cuidado com a digitação, pois  ele necessita ser fortemente idêntico, então espaços, quebra de linhas, devem ser idênticos, se necessário é melhor instalar a extensão para docker compose que o Visual Studio possui.
- Em COPY , copiamos tudo que esta na pasta e colocar na pasta aonde são publicada as paginas web do container.
+O docker compose, que orquestrará todas as dependencias do ambiente, e montará todas as imagens necessárias para a rodar as imagens Docker.Apache, PHP, MySql e PHPMyadmin. Sintaxe do arquivo:
 
+```YAML
+ services:
+   db:
+     image: mysql:latest
+     environment:
+       MYSQL_DATABASE: lamp_demo
+       MYSQL_USER: lamp_demo
+       MYSQL_PASSWORD: password
+       MYSQL_ALLOW_EMPTY_PASSWORD: 1
+     volumes:
+       - "./db:/docker-entrypoint-initdb.d"
+     networks:
+       - lamp-docker
+   www:
+     depends_on:
+       - db
+     image: php:8.1.1-apache
+     volumes:
+       - "./:/var/www/html"
+     ports:
+       - 80:80
+       - 443:443
+     networks:
+       - lamp-docker
+   phpmyadmin:
+     depends_on:
+       - db
+     image: phpmyadmin/phpmyadmin
+     ports:
+       - 8001:80
+     environment:
+       - PMA_HOST=db
+       - PMA_PORT=3306
+     networks:
+       - lamp-docker
+ networks:
+   lamp-docker:
+     driver: bridge
+```
+
+Tomar muito cuidado com a digitação, pois ele necessita ser fortemente idêntico, então espaços, quebra de linhas, devem ser idênticos, se necessário é melhor instalar a extensão para docker compose que o Visual Studio possui.
+Em COPY , copiamos tudo que esta na pasta e colocar na pasta aonde são publicada as paginas web do container.
 
 Vamos , importante estar dentro do diretório que foi criado, e o Dockerfile estar dentro do mesmo diretório:
+
 ```
 $ docker-compose up -d
 ```
+
 O -d significa 'detach' inicia os containers em background, e permite eles funcionarem.
 
 Detalhe o sinal de ponto, ao final, fala que a pasta de trabalho é a propria aonde está o arquivo docker-compose.
 
-
-################  DOCKER COMPOSE   ########################
+################ DOCKER COMPOSE ########################
 gitpod /workspace/DevOpsTraining/compose (main) $ ls
 wordpress.yaml
 gitpod /workspace/DevOpsTraining/compose (main) $ mv wordpress.yaml docker-compose.yaml
@@ -133,18 +145,12 @@ gitpod /workspace/DevOpsTraining/compose (main) $ ls
 docker-compose.yaml
 gitpod /workspace/DevOpsTraining/compose (main) $ docker-compose up -d
 
-
-
-
-
-
-
-
-É colocado uma tag de identificação para melhot localização, com -t , pode ser o nome de sua preferência. 
+É colocado uma tag de identificação para melhot localização, com -t , pode ser o nome de sua preferência.
 
 Será mostrado mensagens da evolução do processo como abaixo:
+
 ```
-[+] Building 1.1s (10/10) FINISHED                                                                                                         
+[+] Building 1.1s (10/10) FINISHED
  => [internal] load build definition from Dockerfile                                                                                  0.2s
  => => transferring dockerfile: 37B                                                                                                   0.0s
  => [internal] load .dockerignore                                                                                                     0.3s
@@ -162,71 +168,88 @@ Será mostrado mensagens da evolução do processo como abaixo:
  => => writing image sha256:d0b5d542ef584608a2b54597c2a3b85dd5ab06814ab7b349f38d2b0cf279b61d                                          0.0s
  => => naming to docker.io/library/apache-docker                                           0.0s
 ```
+
 Verificar se existe a imagem no sistema:
+
 ```
 $ docker images
 REPOSITORY      TAG       IMAGE ID       CREATED          SIZE
 apache-docker   latest    d0b5d542ef58   16 minutes ago   199MB
 ```
+
 Neste momento já temos a nossa imagem no sistema, precisamos agora rodar ela em um Docker container.
 Verificar agora se existe algum contâiner rodando:
+
 ```
 $ docker ps
 ```
+
 Se não existir nenhum container rodando, vai ser retornado uma tabela vazia:
+
 ```
 CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
 ```
+
 Agora vamos colocar para rodar um container pegando como argumento o ID da imagem Docker,
 como podemos conferir pelo comando : docker images, feito acima:
-REPOSITORY      TAG       IMAGE ID       CREATED          SIZE
-apache-docker   latest    d0b5d542ef58   16 minutes ago   199MB
+REPOSITORY TAG IMAGE ID CREATED SIZE
+apache-docker latest d0b5d542ef58 16 minutes ago 199MB
 Pegamos a coluna IMAGE ID , como argumento para o comando abaixo:
-docker run -dit --name NOME_BATISMO_CONTAINER -p 80:80 IMAGE ID 
+docker run -dit --name NOME_BATISMO_CONTAINER -p 80:80 IMAGE ID
+
 ```
 $ docker run -dit --name apache-docker -p 80:80 d0b5d542ef58
 ```
+
 Vai ser montado na porta 80 local, comunicando com a porta 80 do container.
 
-Após isto será exibido a mensagem que a porta 80 está sendo acionada.  <br/> 
-![Imagem Port open codespace github](/images/Port_open_codespace.jpg)  <br/>
+Após isto será exibido a mensagem que a porta 80 está sendo acionada. <br/>
+![Imagem Port open codespace github](/images/Port_open_codespace.jpg) <br/>
 
-Ao clicar ou seguir a porta 80 será exibida pagina index.html, que foi criada anteriormente.  <br/>
-![Imagem Pagina Index.html](/images/pagina_funcionou.jpg)  <br/>
+Ao clicar ou seguir a porta 80 será exibida pagina index.html, que foi criada anteriormente. <br/>
+![Imagem Pagina Index.html](/images/pagina_funcionou.jpg) <br/>
 [Topo](#ancora)
 
-
 <a id="acrescentareditar"></a>
+
 ## 📁 Acrescentar e Editar arquivos
 
 > Para acrescentar e editar arquivos no servidor, precisamos entrar no docker container.
 > Vamos acessar ele através de seu bash.Para isto utilizamos o comando 'exec' do docker.
+
 ```
  $ docker exec -it 1e936a216edd bash
 ```
+
 Vai aparecer a seguir a linha de comando bash do container docker.
 **O simbolo '#' é o seu status de usuario, que indica ser root, o que terá de ser digitado é somente o texto que está após este sinal.
 Se existir conteúdo abaixo do console é somente a visualização da saida do comando.**
+
 ```
 root@1e936a216edd:/usr/local/apache2#
 ```
+
 Vamos só para visualizar o conjunto. Listar os arquivos:
+
 ```
 root@1e936a216edd:/usr/local/apache2# ls
 bin  build  cgi-bin  conf  error  htdocs  icons  include  logs  modules
 ```
+
 Abrir a pasta publica e a seguir listar os arquivos desta pasta.Vamos encontrar os arquivos que criamos da pasta da maquina local.
+
 ```
 root@1e936a216edd:/usr/local/apache2# cd htdocs
 root@1e936a216edd:/usr/local/apache2/htdocs# ls
 Dockerfile  index.html
 ```
 
-Agora vamos entrar no arquivo que queremos editar, ou criar um novo, aí fica conforme a demanda de seu projeto ou  trabalho.
-Para isso vamos usar o VIM, que é um dos primeiros editores Shell nativo. Explicaremos aqui comandos básicos para editar e salvar seus documentos.Se quiser buscar [informações completas](https://www.vim.org/).  </br>
+Agora vamos entrar no arquivo que queremos editar, ou criar um novo, aí fica conforme a demanda de seu projeto ou trabalho.
+Para isso vamos usar o VIM, que é um dos primeiros editores Shell nativo. Explicaremos aqui comandos básicos para editar e salvar seus documentos.Se quiser buscar [informações completas](https://www.vim.org/). </br>
 
-Ao abrir o VIM parece uma coisa meio estranha, pois é  um editor feito para ambiente de linha de comando, e os usuarios acostumados com editores graficos ficam bem confusos. Ao iniciar o VIM aguarda oque o usuário deseja fazer, pode ser edição,  visualização ou navegação. Estes comandos são  divididos em comandos de exibição, edição e navegação.
+Ao abrir o VIM parece uma coisa meio estranha, pois é um editor feito para ambiente de linha de comando, e os usuarios acostumados com editores graficos ficam bem confusos. Ao iniciar o VIM aguarda oque o usuário deseja fazer, pode ser edição, visualização ou navegação. Estes comandos são divididos em comandos de exibição, edição e navegação.
 Vamos editar agora o nosso arquivo index.html, para isto digite:
+
 ```
 root@1e936a216edd:/usr/local/apache2/htdocs#  vi index.html
 ```
@@ -236,15 +259,14 @@ Então o arquivo index.html é exibido, assim:
 ```
 colocar imagem aqui
 ```
-Repare no rodapé,  é nesta área da interface do programa que precisamos prestar atenção, aí é mostrado qual a ação que estamos fazendo.
- Vamos iniciar a edição. A tecla esc funciona como uma baliza, em uma analogia mais simplório é como fosse o ponto neutro do câmbio de um carro, mais para frente vai ficar claro esta comparação.
 
-aperte a tecla esc, para ter certeza que está no menu básico. Em seguida aperte a tecla 'e'. No rodapé do editor aparecerá a palavra INSERT, significando que está  no modo de edição.
-root@1e936a216edd:/usr/local/apache2/htdocs# 
+Repare no rodapé, é nesta área da interface do programa que precisamos prestar atenção, aí é mostrado qual a ação que estamos fazendo.
+Vamos iniciar a edição. A tecla esc funciona como uma baliza, em uma analogia mais simplório é como fosse o ponto neutro do câmbio de um carro, mais para frente vai ficar claro esta comparação.
+
+aperte a tecla esc, para ter certeza que está no menu básico. Em seguida aperte a tecla 'e'. No rodapé do editor aparecerá a palavra INSERT, significando que está no modo de edição.
+root@1e936a216edd:/usr/local/apache2/htdocs#
 
 > [Topo](#ancora)
-
-
 
 gitpod /workspace/DevOps (main) $ git init
 Reinitialized existing Git repository in /workspace/DevOps/.git/
@@ -253,14 +275,14 @@ gitpod /workspace/DevOps (main) $ git commit "Alterado e acrescentado"
 error: pathspec 'Alterado e acrescentado' did not match any file(s) known to git
 gitpod /workspace/DevOps (main) $ git commit -m "Alterado e acrescentado"
 [main f16ac4a] Alterado e acrescentado
- 7 files changed, 135 insertions(+), 1 deletion(-)
- create mode 100644 Comandos_Git.txt
- create mode 100644 Lamp-Server/anotacoes.txt
- create mode 100644 Lamp-Server/db/dump.sql
- create mode 100644 Lamp-Server/php_info.php
- create mode 100644 docker-composeHelp.txt
- delete mode 100644 teste.txt
-gitpod /workspace/DevOps (main) $ git push 
+7 files changed, 135 insertions(+), 1 deletion(-)
+create mode 100644 Comandos_Git.txt
+create mode 100644 Lamp-Server/anotacoes.txt
+create mode 100644 Lamp-Server/db/dump.sql
+create mode 100644 Lamp-Server/php_info.php
+create mode 100644 docker-composeHelp.txt
+delete mode 100644 teste.txt
+gitpod /workspace/DevOps (main) $ git push
 Enumerating objects: 12, done.
 Counting objects: 100% (12/12), done.
 Delta compression using up to 16 threads
@@ -268,11 +290,8 @@ Compressing objects: 100% (8/8), done.
 Writing objects: 100% (9/9), 2.64 KiB | 2.64 MiB/s, done.
 Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://gitlab.com/devops1960215/DevOps.git
-   6b32193..f16ac4a  main -> main
-gitpod /workspace/DevOps (main) $ 
-
-
-
+6b32193..f16ac4a main -> main
+gitpod /workspace/DevOps (main) $
 
 ###########COMANDOS git #####################
 @joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ git config --global user.name "joseivangeraldo"
@@ -284,25 +303,17 @@ gitpod /workspace/DevOps (main) $
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ git commit -m “Mensagem”
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ git config --global user.email "ivan.geraldo@gmail.com
 
-
-$ uname -r  → Ver sistema
-$ cat /etc/os-release → Ver dados do Sistema 
-
-
-
-
-
-
+$ uname -r → Ver sistema
+$ cat /etc/os-release → Ver dados do Sistema
 
 $ git init
 $ docker images
 
 $ docker run -it -d ubuntu
 $ docker ps
-CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
-bdbe65559ed2   ubuntu    "/bin/bash"   23 seconds ago   Up 23 seconds             pedantic_lehmann
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+bdbe65559ed2 ubuntu "/bin/bash" 23 seconds ago Up 23 seconds pedantic_lehmann
 $ docker stop bdbe65559ed2
-
 
 $ docker ps -a
 $ docker ps
@@ -310,59 +321,58 @@ $ docker exec -it c101bde68316 bash
 
 $ docker run -ti -d ubuntu → BAIXA DO DOCKERHUB E JÁ FICA EM RUN
 
-$ docker commit 0ce0075abf59 test → Grava mudanças no container_ID cria uma outra Imagem 
-REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
-test         latest    92338967288c   26 seconds ago   77.8MB
-
+$ docker commit 0ce0075abf59 test → Grava mudanças no container_ID cria uma outra Imagem
+REPOSITORY TAG IMAGE ID CREATED SIZE
+test latest 92338967288c 26 seconds ago 77.8MB
 
 $ docker run -it -d ubuntu
 c35c1d1c4cdc8f734f00742de9e9e77112946a1a3d133d777edb7d5b36bdee7c
 $ docker exec -it c35c1d1c4cdc8f734f00742de9e9e77112946a1a3d133d777edb7d5b36bdee7c bash
 
-
-root@c35c1d1c4cdc:/# apt-get update    
+root@c35c1d1c4cdc:/# apt-get update  
 root@c35c1d1c4cdc:/# apt-get install apache2
 root@c35c1d1c4cdc:/# service apache2 status
- * apache2 is not running
+
+- apache2 is not running
 
 root@c35c1d1c4cdc:/# service apache2 start
- * apache2 is running
+
+- apache2 is running
 
 $ docker ps
-CONTAINER ID   IMAGE     COMMAND       CREATED          STATUS          PORTS     NAMES
-c35c1d1c4cdc   ubuntu    "/bin/bash"   10 minutes ago   Up 10 minutes             youthful_snyder
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+c35c1d1c4cdc ubuntu "/bin/bash" 10 minutes ago Up 10 minutes youthful_snyder
 $ docker commit c35c1d1c4cdc ivan/apache
 Sha256:69cb796b8cab5c68c861889771782f2d056ad1d21e474c9aa97f10bb7ee6da2e
 
-docker run -it -p 82:80 -d ivan/apache  —> PARA MAPAEAR AS PORTAS USA 82 da maquina, 80 do docker
+docker run -it -p 82:80 -d ivan/apache —> PARA MAPAEAR AS PORTAS USA 82 da maquina, 80 do docker
 root@b4e7e3fce777:/# service apache2 start
 
-#########     CARREGAR PARA DOCKERHUB      ##################################
+######### CARREGAR PARA DOCKERHUB ##################################
 $ docker images
-REPOSITORY    TAG       IMAGE ID       CREATED          SIZE
-ivan/apache   latest    9402b17caf8c   47 minutes ago   286MB
+REPOSITORY TAG IMAGE ID CREATED SIZE
+ivan/apache latest 9402b17caf8c 47 minutes ago 286MB
 
 $ docker tag ivan/apache:latest joseivangeraldo/apacheserver:v1
 gitpod /workspace/DevOpsTraining (main) $ docker images
-REPOSITORY                     TAG       IMAGE ID       CREATED          SIZE
-ivan/apache                    latest    9402b17caf8c   50 minutes ago   286MB
-joseivangeraldo/apacheserver   v1        9402b17caf8c   50 minutes ago   286MB
-joseivangeraldo                latest    9402b17caf8c   50 minutes ago   286MB
+REPOSITORY TAG IMAGE ID CREATED SIZE
+ivan/apache latest 9402b17caf8c 50 minutes ago 286MB
+joseivangeraldo/apacheserver v1 9402b17caf8c 50 minutes ago 286MB
+joseivangeraldo latest 9402b17caf8c 50 minutes ago 286MB
 
 $ docker login
 Login Succeeded
 $ docker push joseivangeraldo/apacheserver:v1
 
-
 Dockerfile:
 
 #############CRIAR O ARQUIVO DOCKERFILE ######################
-FROM ubuntu  → pega a imagem do ubuntu
-RUN apt-get update   → atualiza o sistema
-RUN apt-get -y install apache2   → faz a instalação automatica
+FROM ubuntu → pega a imagem do ubuntu
+RUN apt-get update → atualiza o sistema
+RUN apt-get -y install apache2 → faz a instalação automatica
 ADD . /var/www/html → adiciona um diretorio a maquina local
-ENTRYPOINT apachectl -D FOREGROUND   → Ele ja Inicia o Apache
-ENV name Intelipaat  → cria a variavel de ambiente
+ENTRYPOINT apachectl -D FOREGROUND → Ele ja Inicia o Apache
+ENV name Intelipaat → cria a variavel de ambiente
 CONSTRUINDO A DOCKER IMAGE
 $ docker build . -t new_dockerfile
 ###################################################################
@@ -371,70 +381,69 @@ $ docker images
 $ docker run -it -p 84:80 -d new_dockerfile
 f7eb2a9a276b066c0ead0a87c8fcf5f988bc249abc88653412919a00a027fb79
 $ docker ps
-CONTAINER ID   IMAGE            COMMAND                  CREATED         STATUS         PORTS                               NAMES
-f7eb2a9a276b   new_dockerfile   "/bin/sh -c 'apachec…"   8 seconds ago   Up 8 seconds   0.0.0.0:84->80/tcp, :::84->80/tcp   mystifying_haibt
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+f7eb2a9a276b new_dockerfile "/bin/sh -c 'apachec…" 8 seconds ago Up 8 seconds 0.0.0.0:84->80/tcp, :::84->80/tcp mystifying_haibt
 root@f7eb2a9a276b:/# echo $name
-Intelipaat   —> Aqui aparece o nome da seção que criei no Dockerfile 
+Intelipaat —> Aqui aparece o nome da seção que criei no Dockerfile
 
+#### Docker volume Maps
 
+###### TIPO BIND MOUNTING
 
-#### Docker volume Maps ##########
-###### TIPO BIND MOUNTING ###########################
 $ docker run -it -v /workspaces/DevOpsTraining/dockerfile:/app -d new_dockerfile
-workspaces/DevOpsTraining/dockerfile : MINHA PASTA MAQUINA LOCAL 
+workspaces/DevOpsTraining/dockerfile : MINHA PASTA MAQUINA LOCAL
 /app : NOME DA PASTA PARA MONTAR NO CONTAINER
 New_dockerfile : MINHA IMAGEM
 
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ docker images
-REPOSITORY       TAG       IMAGE ID       CREATED       SIZE
-new_dockerfile   latest    676766b44156   6 hours ago   229MB
+REPOSITORY TAG IMAGE ID CREATED SIZE
+new_dockerfile latest 676766b44156 6 hours ago 229MB
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ docker run -it -v /workspaces/DevOpsTraining/dockerfile:/app -d new_dockerfile
 7a95fa33ee8ac6fff6becfee048d0492572c24d566210ff3691d2d2ec4c69123
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ docker exec -it 7a95fa33ee8ac6fff6becfee048d0492572c24d566210ff3691d2d2ec4c69123 bash
 root@7a95fa33ee8a:/# ls
-app  bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+app bin boot dev etc home lib lib32 lib64 libx32 media mnt opt proc root run sbin srv sys tmp usr var
 root@7a95fa33ee8a:/# cd app
 root@7a95fa33ee8a:/app# ls
-1.html  Dockerfile
+1.html Dockerfile
 
 ###########DOCKER VOLUME BETTER WAY#########
 $ docker volume create test
 test
 docker volume ls
-DRIVER    VOLUME NAME
-local     test
-
+DRIVER VOLUME NAME
+local test
 
 $ docker run -it --mount source=test,target=/app -d new_dockerfile
 
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ docker run -it --mount source=test,target=/app -d new_dockerfile
 0d4ab77cc09ec56562d315728d49905e29931478cfbd8ab90826a071aa9f8695
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ docker ps
-CONTAINER ID   IMAGE            COMMAND                  CREATED         STATUS         PORTS     NAMES
-0d4ab77cc09e   new_dockerfile   "/bin/sh -c 'apachec…"   9 seconds ago   Up 8 seconds             blissful_payne
+CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
+0d4ab77cc09e new_dockerfile "/bin/sh -c 'apachec…" 9 seconds ago Up 8 seconds blissful_payne
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ docker exec -it 0d4ab77cc09e bash
 
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ docker images
-REPOSITORY       TAG       IMAGE ID       CREATED       SIZE
-new_dockerfile   latest    676766b44156   7 hours ago   229MB
+REPOSITORY TAG IMAGE ID CREATED SIZE
+new_dockerfile latest 676766b44156 7 hours ago 229MB
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ docker run -it --mount source=apache,target=/var/www/html -d new_dockerfile
 8c28978aaf844753aef77d3fd8d34b89b7cc92b0f69398e1551eaed97fae4a9f
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ docker exec -it 8c28978aaf844753aef77d3fd8d34b89b7cc92b0f69398e1551eaed97fae4a9f bash
 root@8c28978aaf84:/# ls
-bin  boot  dev  etc  home  lib  lib32  lib64  libx32  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+bin boot dev etc home lib lib32 lib64 libx32 media mnt opt proc root run sbin srv sys tmp usr var
 root@8c28978aaf84:/# cd /var/www/html
 root@8c28978aaf84:/var/www/html# ls
-Dockerfile  index.html
+Dockerfile index.html
 root@8c28978aaf84:/var/www/html# exit
 exit
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ ls
-1.html  2.html  3.html  Dockerfile
+1.html 2.html 3.html Dockerfile
 @joseivangeraldo ➜ /workspaces/DevOpsTraining/dockerfile (main) $ cd ..
 @joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ ls
-dockerfile  leiame.txt
+dockerfile leiame.txt
 @joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ touch 2.html
 @joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ ls
-2.html  dockerfile  leiame.txt
+2.html dockerfile leiame.txt
 @joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ vi 2.html
 @joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ docker cp ./2.html 8c28978aaf84:/var/www/html
 @joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ docker rm -f 8c28978aaf84
@@ -443,15 +452,15 @@ dockerfile  leiame.txt
 docker: invalid reference format.
 See 'docker run --help'.
 @joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ docker images
-REPOSITORY       TAG       IMAGE ID       CREATED       SIZE
-new_dockerfile   latest    676766b44156   7 hours ago   229MB
+REPOSITORY TAG IMAGE ID CREATED SIZE
+new_dockerfile latest 676766b44156 7 hours ago 229MB
 @joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ docker run -it --mount source=apache,target=/var/www/html -p 81:80 -d new_dockerfile
 86bfb0be168cc8189ebf6a86509eb6c54c8e3c23e941f12ed8b7e41c88e93057
 $ docker run -it -p 84:80 -d new_dockerfile
 77262fb8929964b7fd488a4f241026066f5d50ef2f4cc6c83f328fd04f7d8cee
-@joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $ 
+@joseivangeraldo ➜ /workspaces/DevOpsTraining (main) $
 
-################  DOCKER COMPOSE   ########################
+################ DOCKER COMPOSE ########################
 gitpod /workspace/DevOpsTraining/compose (main) $ ls
 wordpress.yaml
 gitpod /workspace/DevOpsTraining/compose (main) $ mv wordpress.yaml docker-compose.yaml
@@ -513,51 +522,29 @@ Create and start containers
 docker compose version
 Show the Docker Compose version information
 
-
-
 services:
-  db:
-    # We use a mariadb image which supports both amd64 & arm64 architecture
-    image: mariadb:10.6.4-focal
-    # If you really want to use MySQL, uncomment the following line
-    #image: mysql:8.0.27
-    command: '--default-authentication-plugin=mysql_native_password'
-    volumes:
-      - db_data:/var/lib/mysql
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=somewordpress
-      - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=wordpress
-      - MYSQL_PASSWORD=wordpress
-    expose:
-      - 3306
-      - 33060
-  wordpress:
-    image: wordpress:latest
-    ports:
-      - 80:80
-    restart: always
-    environment:
-      - WORDPRESS_DB_HOST=db
-      - WORDPRESS_DB_USER=wordpress
-      - WORDPRESS_DB_PASSWORD=wordpress
-      - WORDPRESS_DB_NAME=wordpress
+db: # We use a mariadb image which supports both amd64 & arm64 architecture
+image: mariadb:10.6.4-focal # If you really want to use MySQL, uncomment the following line
+#image: mysql:8.0.27
+command: '--default-authentication-plugin=mysql_native_password'
+volumes: - db_data:/var/lib/mysql
+restart: always
+environment: - MYSQL_ROOT_PASSWORD=somewordpress - MYSQL_DATABASE=wordpress - MYSQL_USER=wordpress - MYSQL_PASSWORD=wordpress
+expose: - 3306 - 33060
+wordpress:
+image: wordpress:latest
+ports: - 80:80
+restart: always
+environment: - WORDPRESS_DB_HOST=db - WORDPRESS_DB_USER=wordpress - WORDPRESS_DB_PASSWORD=wordpress - WORDPRESS_DB_NAME=wordpress
 volumes:
-  db_data:
+db_data:
 
-
-
-
-
-##########   DOCKER SWARM ##################
-
-
+########## DOCKER SWARM ##################
 
 É preciso ter uma maquina master e uma maquina worker , duas maquinas diferentes.
 
-
 ###### ASSIM ESTA MAQUINA SE TORNA MANAGER QUE É O LIDER########
+
 Swarm initialized: current node (f9lva3xmrosh5dk7zf3l1sdfu) is now a manager.
 
 To add a worker to this swarm, run the following command:
@@ -566,22 +553,19 @@ To add a worker to this swarm, run the following command:
 
 To add a manager to this swarm, run 'docker swarm join-token manager' and follow the instructions.
 
-
 <
 
 ## Mizukage
 
 > Loren Ipsum
 > Donec nec mattis dui, quis sagittis magna. Praesent in sollicitudin erat, non molestie velit. Nam tempor metus et laoreet sodales. Sed eu mauris odio. Maecenas at feugiat mi. Nam venenatis accumsan mi, in dictum nisl. Phasellus laoreet nec sem at volutpat.
-> [Topo](#ancora)
-> <a id="ancora4"></a>
+> [Topo](#ancora) > <a id="ancora4"></a>
 
 ## Raikage
 
 > Loren Ipsum
 > Donec nec mattis dui, quis sagittis magna. Praesent in sollicitudin erat, non molestie velit. Nam tempor metus et laoreet sodales. Sed eu mauris odio. Maecenas at feugiat mi. Nam venenatis accumsan mi, in dictum nisl. Phasellus laoreet nec sem at volutpat.
-> [Topo](#ancora)
-> <a id="ancora5"></a>
+> [Topo](#ancora) > <a id="ancora5"></a>
 
 ## Tsuchikage
 
@@ -1204,8 +1188,5 @@ https://github.com/matiassingers/awesome-readme
 https://blog.rocketseat.com.br/o-que-e-readme-e-porque-e-tao-importante/
 Posta aí nos comentários o seu README bonitão :)
 
-
-
-
-
-
+PLUGIN MYSQLI NECESSARIO PARA RODAR QUERY MYSQL:
+gitpod /workspace/DevOps/Lamp-Server (master) $ docker-compose exec www docker-php-ext-install pdo pdo_mysql mysqli
