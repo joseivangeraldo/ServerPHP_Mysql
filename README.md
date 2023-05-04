@@ -139,6 +139,18 @@ configuradas, um alerta vai aparecer do codespace, se quiser pode fechar a janel
 ![Imagem que aparece](https://github.com/joseivangeraldo/html_css/blob/main/images/Port_open_codespace.jpg)
 
 No menu acima, da janela do terminal, te.os a opção ports, aonde temos as portas que foram carregadas seguindo esta composição:
+
+### Configuração das portas
+
+| Porta     | Finalidade    |
+| --------- | --------------|
+|  80       | http/MySqladmi|
+|  443      | https         |
+|  3306     | MySql         |
+
+
+
+
 ```
 COLOCAR ENTRADA E SAIDA DO CONSOLE
 ```
