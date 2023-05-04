@@ -120,6 +120,8 @@ Vamos , importante estar dentro do diretório que foi criado, e o Dockerfile est
 ```
 $ docker-compose up -d
 ```
+O -d significa 'detach' inicia os containers em background, e permite eles funcionarem.
+
 Detalhe o sinal de ponto, ao final, fala que a pasta de trabalho é a propria aonde está o arquivo docker-compose.
 
 
