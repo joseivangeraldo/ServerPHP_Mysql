@@ -88,3 +88,19 @@ FROM httpd:2.4
  1e936a216edd   d0b5d542ef58   "httpd-foreground"   13 hours ago   Exited (0) About a minute ago             apache-docker 
  @joseivangeraldo ➜ /workspaces/html_css (main) $ docker rm 1e936a216edd 
  1e936a216edd
+
+
+ ######DELETAR E/OU REMOVER TODOS OS DOCKERS###########
+Passo a passo
+Para todas as instâncias
+docker stop $(docker ps -a -q)
+
+Remove todas as instâncias
+docker rm $(docker ps -a -q)
+
+Para todas as imagens
+docker image rm $(docker image ls -a -q)
+
+Para todos os volumes
+docker volume prune
+#####################################################
