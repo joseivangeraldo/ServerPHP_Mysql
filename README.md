@@ -84,7 +84,7 @@ $ code docker-compose.yml
 
 O docker compose, que orquestrará todas as dependencias do ambiente, e montará todas as imagens necessárias para a rodar as imagens Docker.Apache, PHP, MySql e PHPMyadmin. Sintaxe do arquivo:
 
-```YAML
+```diff YAML
 services:
   db:
     image: mysql:latest
