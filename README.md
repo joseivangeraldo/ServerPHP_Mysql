@@ -125,13 +125,11 @@ Dentro deste diretório criar uma arquivo básico chamado index.html. Só para c
 	</body>
 </html>
 ```
-
+Após subir o ambiente com o Docker compose:
 ```
 $ docker-compose up -d
 ```
-
 O -d significa 'detach' inicia os containers em background, e permite eles funcionarem.
-
 Detalhe o sinal de ponto, ao final, fala que a pasta de trabalho é a propria aonde está o arquivo docker-compose.
 
 ################ DOCKER COMPOSE ########################
