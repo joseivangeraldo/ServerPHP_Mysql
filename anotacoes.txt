@@ -104,3 +104,5 @@ docker image rm $(docker image ls -a -q)
 Para todos os volumes
 docker volume prune
 #####################################################
+
+git config pull.rebase false
