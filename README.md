@@ -67,7 +67,7 @@ $ cd LampServer
 Criar uma página chamada index.html básica dentro deste diretório, para verificar que ocorreu uma instalação perfeita.
 Segue um modelo básico abaixo:
 
-```html
+```lang html
 <html>
   <head> </head>
   <body>
