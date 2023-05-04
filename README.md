@@ -142,11 +142,11 @@ No menu acima, da janela do terminal, te.os a opção ports, aonde temos as port
 
 ### Configuração das portas
 
-| Porta     | Finalidade        |
-| --------- | ----------------- |
-|  80       | http / MySqlAdmin |
-|  443      | https             |
-|  3306     | MySql             |
+| Porta     | Finalidade |
+| --------- | ---------- |
+|  80       | http       |
+|  443      | https      |
+|  3306     | MySql      |
 
 
 
