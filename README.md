@@ -85,43 +85,43 @@ $ code docker-compose.yml
 O docker compose, que orquestrará todas as dependencias do ambiente, e montará todas as imagens necessárias para a rodar as imagens Docker.Apache, PHP, MySql e PHPMyadmin. Sintaxe do arquivo:
 
 ```YAML
- services:
-   db:
-     image: mysql:latest
-     environment:
-       MYSQL_DATABASE: lamp_demo
-       MYSQL_USER: lamp_demo
-       MYSQL_PASSWORD: password
-       MYSQL_ALLOW_EMPTY_PASSWORD: 1
-     volumes:
-       - "./db:/docker-entrypoint-initdb.d"
-     networks:
-       - lamp-docker
-   www:
-     depends_on:
-       - db
-     image: php:8.1.1-apache
-     volumes:
-       - "/var/www/html:/var/www/html"
-     ports:
-       - 80:80
-       - 443:443
-     networks:
-       - lamp-docker
-   phpmyadmin:
-     depends_on:
-       - db
-     image: phpmyadmin/phpmyadmin
-     ports:
-       - 8001:80
-     environment:
-       - PMA_HOST=db
-       - PMA_PORT=3306
-     networks:
-       - lamp-docker
- networks:
-   lamp-docker:
-     driver: bridge
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: lamp_demo
+      MYSQL_USER: lamp_demo
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d"
+    networks:
+      - lamp-docker
+  www:
+    depends_on:
+      - db
+    image: php:8.1.1-apache
+    volumes:
+     !- "/workspaces/ServerPHP_Mysql/LampServer/WebPage:/var/www/html"
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - lamp-docker
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    networks:
+      - lamp-docker
+networks:
+  lamp-docker:
+    driver: bridge
 ```
 
 Tomar muito cuidado com a digitação, pois ele necessita ser fortemente idêntico, então espaços, quebra de linhas, devem ser idênticos, se necessário é melhor instalar a extensão para docker compose que o Visual Studio possui.
