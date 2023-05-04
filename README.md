@@ -63,19 +63,6 @@ Depois entre dentro deste diretório:
 ```
 $ cd LampServer
 ```
-
-Criar uma página chamada index.html básica dentro deste diretório, para verificar que ocorreu uma instalação perfeita.
-Segue um modelo básico abaixo:
-
-```lang html
-<html>
-  <head> </head>
-  <body>
-    <h1>A Pagina Inicial Funcionou</h1>
-  </body>
-</html>
-```
-
 Crie um arquivo chamado docker-compose.yml. Tem de ter este nome, idêntico assim, pois se for diferente não funcionará a geração da imagem. O Codespace GitHub e Gitpod já vem com Visual Studio configurado, então para criação e edição é só digitar:
 
 ```
@@ -84,7 +71,7 @@ $ code docker-compose.yml
 
 O docker compose, que orquestrará todas as dependencias do ambiente, e montará todas as imagens necessárias para a rodar as imagens Docker.Apache, PHP, MySql e PHPMyadmin. Sintaxe do arquivo:
 
-```diff YAML
+```YAML
 services:
   db:
     image: mysql:latest
@@ -102,7 +89,7 @@ services:
       - db
     image: php:8.1.1-apache
     volumes:
-    ! - "/workspaces/ServerPHP_Mysql/LampServer/WebPage:/var/www/html"
+    !- "/workspaces/ServerPHP_Mysql/LampServer/WebPage:/var/www/html"
     ports:
       - 80:80
       - 443:443
@@ -127,7 +114,20 @@ networks:
 Tomar muito cuidado com a digitação, pois ele necessita ser fortemente idêntico, então espaços, quebra de linhas, devem ser idênticos, se necessário é melhor instalar a extensão para docker compose que o Visual Studio possui.
 Em COPY , copiamos tudo que esta na pasta e colocar na pasta aonde são publicada as paginas web do container.
 
-Vamos , importante estar dentro do diretório que foi criado, e o Dockerfile estar dentro do mesmo diretório:
+
+```diff
+- Importante estar dentro do diretório que foi criado, e o Docker-compose tem de estar dentro do mesmo diretório:
+```
+Agora vamos criar outro diretório, este que ficará todos os nossos arquivos de trabalho da WebPage.
+```html
+<html>
+	<head>
+	</head>
+	<body>
+		Funcionou a pagina Inicial.
+	</body>
+</html>
+```
 
 ```
 $ docker-compose up -d
@@ -145,7 +145,7 @@ gitpod /workspace/DevOpsTraining/compose (main) $ ls
 docker-compose.yaml
 gitpod /workspace/DevOpsTraining/compose (main) $ docker-compose up -d
 
-É colocado uma tag de identificação para melhot localização, com -t , pode ser o nome de sua preferência.
+É colocado uma tag de identificação para melhor localização, com -t , pode ser o nome de sua preferência.
 
 Será mostrado mensagens da evolução do processo como abaixo:
 
