@@ -85,7 +85,7 @@ services:
       - db
     image: php:8.1.1-apache
     volumes:
-    !- "/workspaces/ServerPHP_Mysql/LampServer/WebPage:/var/www/html"
+    - "/workspaces/ServerPHP_Mysql/LampServer/WebPage:/var/www/html"
     ports:
       - 80:80
       - 443:443
@@ -106,7 +106,7 @@ networks:
   lamp-docker:
     driver: bridge
 ```
-Tomar muito cuidado com a digitação, pois ele necessita ser fortemente idêntico, então espaços, quebra de linhas, devem ser idênticos, se necessário é melhor instalar a extensão para docker compose que o Visual Studio possui.
+Tomar muito cuidado com a digitação, pois ele necessita ser fortemente idêntico, então espaços, quebra de linhas, devem ser idênticos, se necessário é melhor instalar a extensão para docker compose que o Visual Studio possui. Na parte 'volumes:' foi colocado o caminho absoluto do workspace, é mais seguro e evita riscos de conflitos.
 Pode ser que se depare com erros em virtude de espaços a mais ou alguma formatação incorreta.
 ```diff
 - Importante estar dentro do diretório que foi criado, e o Docker-compose tem de estar dentro do mesmo diretório:
@@ -115,6 +115,7 @@ Agora vamos criar outro diretório, este que ficará todos os nossos arquivos de
 ```shell
 $ mkdir webpage
 ```
+Dentro deste diretório criar uma arquivo básico chamado index.html. Só para conferir se funcionou corretamente a geração do ambiente.
 ```html
 <html>
 	<head>
