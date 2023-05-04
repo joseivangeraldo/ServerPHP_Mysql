@@ -144,7 +144,7 @@ No menu acima, da janela do terminal, te.os a opção ports, aonde temos as port
 
 | Porta     | Finalidade        |
 | --------- | ----------------- |
-|  80       | http / MySqladmin |
+|  80       | http / MySqlAdmin |
 |  443      | https             |
 |  3306     | MySql             |
 
