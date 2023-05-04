@@ -136,7 +136,7 @@ $ docker-compose up -d
 O -d significa 'detach' inicia os containers em background, e permite eles funcionarem, liberando o console para trabalhar.
 Então começará a montagem das imagens,volumes e suas dependências, se não ocorrer nenhum erro, vai ligar as portas de entrada
 configuradas, um alerta vai aparecer do codespace, se quiser pode fechar a janela. 
-![COLOCAR IMAGEM DAS PORTAS](#)
+![Imagem que aparece](https://github.com/joseivangeraldo/html_css/blob/main/images/Port_open_codespace.jpg)
 
 Abaixo comando e resultado de saida:
 ```
