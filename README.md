@@ -126,7 +126,6 @@ Dentro deste diretório criar uma arquivo básico chamado index.html. Só para c
 </html>
 ```
 Vamos sair deste diretório e voltar aonde esta o docker-compose.yml:
-Dentro deste diretório criar uma arquivo básico chamado index.html. Só para conferir se funcionou corretamente a geração do ambiente.
 ```
 $ cd ..
 ```
@@ -135,6 +134,14 @@ Agora que estamos no diretório do arquivo docker-compose, vamos subir o ambient
 $ docker-compose up -d
 ```
 O -d significa 'detach' inicia os containers em background, e permite eles funcionarem, liberando o console para trabalhar.
+Então começará a montagem das imagens,volumes e suas dependências, se não ocorrer nenhum erro, vai ligar as portas de entrada
+configuradas, um alerta vai aparecer do codespace, se quiser pode fechar a janela. 
+![COLOCAR IMAGEM DAS PORTAS](#)
+
+Abaixo comando e resultado de saida:
+```
+COLOCAR ENTRADA E SAIDA DO CONSOLE
+```
 
 ################ DOCKER COMPOSE ########################
 gitpod /workspace/DevOpsTraining/compose (main) $ ls
