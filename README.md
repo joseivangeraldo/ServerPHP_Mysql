@@ -57,20 +57,16 @@ $ mkdir LampServer
 ```
 
 O nome do diretório pode ser este ou qualquer outro de sua preferência.
-
-Depois entre dentro deste diretório:
-
-```
+Depois entre neste diretório:
+```shell
 $ cd LampServer
 ```
 Crie um arquivo chamado docker-compose.yml. Tem de ter este nome, idêntico assim, pois se for diferente não funcionará a geração da imagem. O Codespace GitHub e Gitpod já vem com Visual Studio configurado, então para criação e edição é só digitar:
 
-```
+```shell
 $ code docker-compose.yml
 ```
-
 O docker compose, que orquestrará todas as dependencias do ambiente, e montará todas as imagens necessárias para a rodar as imagens Docker.Apache, PHP, MySql e PHPMyadmin. Sintaxe do arquivo:
-
 ```YAML
 services:
   db:
@@ -110,15 +106,15 @@ networks:
   lamp-docker:
     driver: bridge
 ```
-
 Tomar muito cuidado com a digitação, pois ele necessita ser fortemente idêntico, então espaços, quebra de linhas, devem ser idênticos, se necessário é melhor instalar a extensão para docker compose que o Visual Studio possui.
-Em COPY , copiamos tudo que esta na pasta e colocar na pasta aonde são publicada as paginas web do container.
-
-
+Pode ser que se depare com erros em virtude de espaços a mais ou alguma formatação incorreta.
 ```diff
 - Importante estar dentro do diretório que foi criado, e o Docker-compose tem de estar dentro do mesmo diretório:
 ```
-Agora vamos criar outro diretório, este que ficará todos os nossos arquivos de trabalho da WebPage.
+Agora vamos criar outro diretório, este que ficará todos os nossos arquivos de trabalho da WebPage:
+```shell
+$ mkdir webpage
+```
 ```html
 <html>
 	<head>
