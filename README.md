@@ -1193,3 +1193,85 @@ gitpod /workspace/DevOps/Lamp-Server (master) $ docker-compose exec www docker-p
 # texto em cinza
 @@ texto em roxo (e negrito)@@
 ```
+
+###########EVUÇÃO DA TELA ################
+@joseivangeraldo ➜ /workspaces/ServerPHP_Mysql/LampServer (main) $ docker-compose up -d
+Pulling db (mysql:latest)...
+latest: Pulling from library/mysql
+328ba678bf27: Pull complete
+f3f5ff008d73: Pull complete
+dd7054d6d0c7: Pull complete
+70b5d4e8750e: Pull complete
+cdc4a7b43bdd: Pull complete
+a0608f8959e0: Pull complete
+5823e721608f: Pull complete
+a564ada930a9: Pull complete
+539565d00e89: Pull complete
+a11a06843fd5: Pull complete
+92f6d4aa041d: Pull complete
+Digest: sha256:a43f6e7e7f3a5e5b90f857fbed4e3103ece771b19f0f75880f767cf66bbb6577
+Status: Downloaded newer image for mysql:latest
+Pulling www (php:8.1.1-apache)...
+8.1.1-apache: Pulling from library/php
+a2abf6c4d29d: Pull complete
+c5608244554d: Pull complete
+2d07066487a0: Pull complete
+1b6dfaf1958c: Pull complete
+32c5e6a60073: Pull complete
+90cf855b27cc: Pull complete
+8b0f1068c586: Pull complete
+ec575205efc1: Pull complete
+ce32dd59dc22: Pull complete
+3a063a1854de: Pull complete
+2edfe9f6edd9: Pull complete
+a54a54bbb211: Pull complete
+6b5874b920d5: Pull complete
+Digest: sha256:456a0a47453ee517495f82cf334325c771845fc45d1dc52098f305a8d48e59af
+Status: Downloaded newer image for php:8.1.1-apache
+Pulling phpmyadmin (phpmyadmin/phpmyadmin:)...
+latest: Pulling from phpmyadmin/phpmyadmin
+f1f26f570256: Pull complete
+ee0a4e40ccac: Pull complete
+5ca9fb408faa: Pull complete
+5baa808a48ff: Pull complete
+6e8d74e4d8ee: Pull complete
+fac8e70fcf67: Pull complete
+b3b7906fb177: Pull complete
+cb4935bbeb83: Pull complete
+c9e00ef337e3: Pull complete
+cfe495c8d695: Pull complete
+dcc3fd107f0c: Pull complete
+fe3c587d1f07: Pull complete
+677f27d94442: Pull complete
+4d778a8cb653: Pull complete
+5f0f7b557ecd: Pull complete
+6ad259d60f7c: Pull complete
+41acd705cbc4: Pull complete
+912204d5a7e6: Pull complete
+Digest: sha256:ed87921184b59f7d8fc85c6a5f041c22758a4d4419c0ee3bac38eb7e133eaed3
+Status: Downloaded newer image for phpmyadmin/phpmyadmin:latest
+Creating lampserver_db_1 ... done
+Creating lampserver_www_1        ... done
+Creating lampserver_phpmyadmin_1 ... 
+
+
+joseivangeraldo ➜ /workspaces/ServerPHP_Mysql/LampServer (main) $ docker-compose stop
+Stopping lampserver_www_1        ... done
+Stopping lampserver_phpmyadmin_1 ... done
+Stopping lampserver_db_1         ... done
+
+@joseivangeraldo ➜ /workspaces/ServerPHP_Mysql (main) $ git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   anotacoes.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        LampServer/WebPage/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+@joseivangeraldo ➜ /workspaces/ServerPHP_Mysql (main) $ 
