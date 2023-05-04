@@ -102,7 +102,7 @@ O docker compose, que orquestrará todas as dependencias do ambiente, e montará
        - db
      image: php:8.1.1-apache
      volumes:
-       - "./:/var/www/html"
+       - "/var/www/html:/var/www/html"
      ports:
        - 80:80
        - 443:443
