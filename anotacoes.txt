@@ -1,58 +1,9 @@
-FROM httpd:2.4  
- COPY ./ /usr/local/apache2/htdocs/ 
- RUN ["apt-get", "update"]  
- RUN ["apt-get", "install", "-y", "vim"] 
-  
+
  docker build .  
  docker build -t apache-docker . --> coloca uma tag para melhot identificação 
   docker run -dit --name NOME_BATISMO_CONTAINER -p 80:80 NOME_IMAGEM  
   docker stop ID_CONTAINER  
   docker start ID_CONTAINER  
-  
-  
-  
- @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git init 
- Initialized empty Git repository in /workspaces/html_css/ServerApache/.git/ 
- @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git checkout 
- fatal: You are on a branch yet to be born 
- @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git status 
- On branch main 
-  
- No commits yet 
-  
- Untracked files: 
-   (use "git add <file>..." to include in what will be committed) 
-         Dockerfile 
-         index.html 
-  
- nothing added to commit but untracked files present (use "git add" to track) 
- @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git add . 
- @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git commit -a -m "nova demanda" 
- @joseivangeraldo ➜ /workspaces/html_css/ServerApache (main) $ git push 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git init 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git add . 
-  
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git pull 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git init 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git add . 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git push 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git merge main 
-  
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git remote add origin https://github.com/joseivangeraldo/html_css.git 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git branch -M main 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git push -u origin main 
-  
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git add . 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git status 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git restore --staged ServerApache 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git restore --staged anotacoes.txt 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git status 
-  
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git add . 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git status 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git commit -a -m "Demanda" 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git status 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ git push 
   
  https://docs.docker.com/develop/develop-images/dockerfile_best-practices/ 
  https://phoenixnap.com/kb/how-to-commit-changes-to-docker-image 
@@ -77,20 +28,7 @@ FROM httpd:2.4
  @joseivangeraldo ➜ /workspaces/html_css (main) $ docker ps 
  @joseivangeraldo ➜ /workspaces/html_css (main) $ docker commit 1e936a216edd apache-1.0 
   
- @joseivangeraldo ➜ /workspaces/html_css (main) $ docker images 
- REPOSITORY      TAG       IMAGE ID       CREATED         SIZE 
- apache-1.0      latest    f6c07e87a702   8 seconds ago   199MB 
- apache-docker   latest    d0b5d542ef58   14 hours ago    199MB 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ 
-  
- @joseivangeraldo ➜ /workspaces/html_css (main) $ docker ps -a 
- CONTAINER ID   IMAGE          COMMAND              CREATED        STATUS                          PORTS     NAMES 
- 1e936a216edd   d0b5d542ef58   "httpd-foreground"   13 hours ago   Exited (0) About a minute ago             apache-docker 
- @joseivangeraldo ➜ /workspaces/html_css (main) $ docker rm 1e936a216edd 
- 1e936a216edd
-
-
- ######DELETAR E/OU REMOVER TODOS OS DOCKERS###########
+######DELETAR E/OU REMOVER TODOS OS DOCKERS###########
 Passo a passo
 Para todas as instâncias
 docker stop $(docker ps -a -q)
@@ -107,65 +45,8 @@ docker volume prune
 
 git config pull.rebase false
 
-###########EVUÇÃO DA TELA ################
+###########EVOLUÇÃO DA TELA ################
 @joseivangeraldo ➜ /workspaces/ServerPHP_Mysql/LampServer (main) $ docker-compose up -d
-Pulling db (mysql:latest)...
-latest: Pulling from library/mysql
-328ba678bf27: Pull complete
-f3f5ff008d73: Pull complete
-dd7054d6d0c7: Pull complete
-70b5d4e8750e: Pull complete
-cdc4a7b43bdd: Pull complete
-a0608f8959e0: Pull complete
-5823e721608f: Pull complete
-a564ada930a9: Pull complete
-539565d00e89: Pull complete
-a11a06843fd5: Pull complete
-92f6d4aa041d: Pull complete
-Digest: sha256:a43f6e7e7f3a5e5b90f857fbed4e3103ece771b19f0f75880f767cf66bbb6577
-Status: Downloaded newer image for mysql:latest
-Pulling www (php:8.1.1-apache)...
-8.1.1-apache: Pulling from library/php
-a2abf6c4d29d: Pull complete
-c5608244554d: Pull complete
-2d07066487a0: Pull complete
-1b6dfaf1958c: Pull complete
-32c5e6a60073: Pull complete
-90cf855b27cc: Pull complete
-8b0f1068c586: Pull complete
-ec575205efc1: Pull complete
-ce32dd59dc22: Pull complete
-3a063a1854de: Pull complete
-2edfe9f6edd9: Pull complete
-a54a54bbb211: Pull complete
-6b5874b920d5: Pull complete
-Digest: sha256:456a0a47453ee517495f82cf334325c771845fc45d1dc52098f305a8d48e59af
-Status: Downloaded newer image for php:8.1.1-apache
-Pulling phpmyadmin (phpmyadmin/phpmyadmin:)...
-latest: Pulling from phpmyadmin/phpmyadmin
-f1f26f570256: Pull complete
-ee0a4e40ccac: Pull complete
-5ca9fb408faa: Pull complete
-5baa808a48ff: Pull complete
-6e8d74e4d8ee: Pull complete
-fac8e70fcf67: Pull complete
-b3b7906fb177: Pull complete
-cb4935bbeb83: Pull complete
-c9e00ef337e3: Pull complete
-cfe495c8d695: Pull complete
-dcc3fd107f0c: Pull complete
-fe3c587d1f07: Pull complete
-677f27d94442: Pull complete
-4d778a8cb653: Pull complete
-5f0f7b557ecd: Pull complete
-6ad259d60f7c: Pull complete
-41acd705cbc4: Pull complete
-912204d5a7e6: Pull complete
-Digest: sha256:ed87921184b59f7d8fc85c6a5f041c22758a4d4419c0ee3bac38eb7e133eaed3
-Status: Downloaded newer image for phpmyadmin/phpmyadmin:latest
-Creating lampserver_db_1 ... done
-Creating lampserver_www_1        ... done
-Creating lampserver_phpmyadmin_1 ... 
 
 
 joseivangeraldo ➜ /workspaces/ServerPHP_Mysql/LampServer (main) $ docker-compose stop
@@ -188,3 +69,117 @@ Untracked files:
 
 no changes added to commit (use "git add" and/or "git commit -a")
 @joseivangeraldo ➜ /workspaces/ServerPHP_Mysql (main) $ 
+
+   
+<p>Abaixo anotações que são pertinentes para a instalação de aplicações rodando em conjunto,
+montado em três containers e interligados entre si.
+PHP, Apache e Mysql.</p>
+<p>Primeiro é preciso criar um arquivo .Yml, que será orquestrado pelo docker-compose"></p>
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_DATABASE: lamp_demo
+      MYSQL_USER: lamp_demo
+      MYSQL_PASSWORD: password
+      MYSQL_ALLOW_EMPTY_PASSWORD: 1
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d"
+    networks:
+      - lamp-docker
+  www:
+    depends_on:
+      - db
+    image: php:8.1.1-apache
+    volumes:
+      - "./:/var/www/html"
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - lamp-docker
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - 8001:80
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    networks:
+      - lamp-docker
+networks:
+  lamp-docker:
+    driver: bridge
+
+version: '2'
+services:
+  www:
+    image: php:8.1.18-apache-bullseye
+    volumes:
+      - "./:/var/www/html"
+    ports:
+      - 80:80
+      - 443:
+      
+
+
+FROM ubuntu  → pega a imagem do ubuntu
+RUN apt-get update   → atualiza o sistema
+RUN apt-get -y install apache2   → faz a instalação automatica
+ADD . /var/www/html → adiciona um diretorio a maquina local
+ENTRYPOINT apachectl -D FOREGROUND   → Ele ja Inicia o Apache
+ENV name Nome_Ambiente → cria a variavel de ambiente
+ 
+
+
+FROM php:7.4-fpm
+# Arguments defined in docker-compose.yml
+ARG user
+ARG uid
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    git \
+    curl \
+    libpng-dev \
+    libonig-dev \
+    libxml2-dev \
+    zip \
+    unzip
+# Clear cache
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+# Get latest Composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Create system user to run Composer and Artisan Commands
+RUN useradd -G www-data,root -u $uid -d /home/$user $user
+RUN mkdir -p /home/$user/.composer && \
+    chown -R $user:$user /home/$user
+# Set working directory
+WORKDIR /var/www
+USER $user
+
+
+<?php
+$connect = mysqli_connect('db','lamp_demo','password','lamp_demo')
+    or die ('Não foi possivel conectar');
+
+$query = 'SELECT * FROM blog';
+$result = mysqli_query($connect, $query);
+
+echo '<h1>MySQL Content:</h1>';
+
+while($record = mysqli_fetch_assoc($result))
+{
+    echo '<h2>'.$record['title'].'</h2>';
+    echo '<p>'.$record['content'].'</p>';
+    echo 'Posted: '.$record['date'];
+    echo '<hr>';
+}
+mysql_close($connect);
+?>
+
+gitpod /workspace/DevOps/Lamp-Server (master) $ docker-compose exec www docker-php-ext-install pdo pdo_mysql mysqli
+

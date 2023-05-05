@@ -55,31 +55,6 @@ services:
       - 443:
       
 
-gitpod /workspace/DevOps (main) $ git init
-Reinitialized existing Git repository in /workspace/DevOps/.git/
-gitpod /workspace/DevOps (main) $ git add .
-gitpod /workspace/DevOps (main) $ git commit -m "Alterado e acrescentado"
-[main f16ac4a] Alterado e acrescentado
- 7 files changed, 135 insertions(+), 1 deletion(-)
- create mode 100644 Comandos_Git.txt
- create mode 100644 Lamp-Server/anotacoes.txt
- create mode 100644 Lamp-Server/db/dump.sql
- create mode 100644 Lamp-Server/php_info.php
- create mode 100644 docker-composeHelp.txt
- delete mode 100644 teste.txt
-gitpod /workspace/DevOps (main) $ git push 
-Enumerating objects: 12, done.
-Counting objects: 100% (12/12), done.
-Delta compression using up to 16 threads
-Compressing objects: 100% (8/8), done.
-Writing objects: 100% (9/9), 2.64 KiB | 2.64 MiB/s, done.
-Total 9 (delta 0), reused 0 (delta 0), pack-reused 0
-To https://gitlab.com/devops1960215/DevOps.git
-   6b32193..f16ac4a  main -> main
-gitpod /workspace/DevOps (main) $       
-
-git commit -S -m "YOUR_COMMIT_MESSAGE"
-
 
 FROM ubuntu  → pega a imagem do ubuntu
 RUN apt-get update   → atualiza o sistema
@@ -134,9 +109,11 @@ while($record = mysqli_fetch_assoc($result))
     echo 'Posted: '.$record['date'];
     echo '<hr>';
 }
-
+mysql_close($connect);
 ?>
 
 gitpod /workspace/DevOps/Lamp-Server (master) $ docker-compose exec www docker-php-ext-install pdo pdo_mysql mysqli
+
+
 </body>
 </html>
