@@ -164,7 +164,6 @@ password: password  </br>
 Agora vamos colocar dados no nosso BD, e depois ver o retorno em uma pagina web.
 Vamos entrar no MySqlAdmin, com a senha e usuario passado anteriormente, entrar no banco lamp_demo, depois enviar o arquivo blog.sql criado.  </br>
 Neste arquivo temos só um teste bem simples, feito pelo texto padrão 'Lorem Ipsum', só para ver se está funcionando o BD:  </br>
-
 ```sql
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
@@ -226,6 +225,34 @@ COMMIT;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
 ```
+Após sair do painel MySqlAdmin, e criar dentro do diretorio webpage, a pagina web conecta.php
+```php
+<?php
+$connect = mysqli_connect('db','lamp_demo','password','lamp_demo')
+    or die ('Não foi possivel conectar');
+
+$query = 'SELECT * FROM blog';
+$result = mysqli_query($connect, $query);
+
+echo '<h1>MySQL Content:</h1>';
+
+while($record = mysqli_fetch_assoc($result))
+{
+    echo '<h2>'.$record['title'].'</h2>';
+    echo '<p>'.$record['content'].'</p>';
+    echo 'Posted: '.$record['date'];
+    echo '<hr>';
+}
+?>
+```
+Então entramos nesta pagina via link porta 80.
+```diff
+- Importante: Vai ser apresentado o erro, falando que a extensão mysqli não está presente, isto é contornado digitando dentro do diretório LampServer:
+```
+```
+$ docker-compose exec www docker-php-ext-install pdo pdo_mysql mysqli
+```
+Aproveitamos e também instalamos além de mysqli, instalamos também a extensão pdo_mysql que pode ser necessária.
 
 ################ DOCKER COMPOSE ########################
 gitpod /workspace/DevOpsTraining/compose (main) $ ls
