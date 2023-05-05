@@ -147,7 +147,7 @@ No menu acima, da janela do terminal, temos a opção ports, aonde temos as port
 | --------- | ---------- |
 |  80       | http       |
 |  443      | https      |
-|  3306     | MySql      |
+|  8001     | phpMyAdmin |      |
 
 
 
