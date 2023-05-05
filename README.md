@@ -155,8 +155,10 @@ No menu acima, da janela do terminal, temos a opção ports, aonde temos as port
 |  80       | http       |
 |  443      | https      |
 |  8001     | phpMyAdmin | 
+
 Clicando em Open In Browser nas porta 80 Apache:  </br>
-![Imagem](https://github.com/joseivangeraldo/ServerPHP_Mysql/blob/main/images/PaginaInicialApache.png)  </br></br>
+![Imagem](https://github.com/joseivangeraldo/ServerPHP_Mysql/blob/main/images/PaginaInicialApache.png)
+
 Clicando agora na porta 8001 phpMyAdmin, username:lamp_demo / password:password
 ![imagem2](https://github.com/joseivangeraldo/ServerPHP_Mysql/blob/main/images/PaginaInicialPHPMyAdmin.png)
 
