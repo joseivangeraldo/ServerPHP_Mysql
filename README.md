@@ -159,9 +159,70 @@ password: password  </br>
 ![imagemPHPmYaDMIN](https://github.com/joseivangeraldo/ServerPHP_Mysql/blob/main/images/PaginaInicialPHPMyAdmin.png)
 
 
+Agora vamos colocar dados no nosso BD, e depois ver o retorno em uma pagina web.
+Vamos entrar no MySqlAdmin, com a senha e usuario passado anteriormente, entrar no banco lamp_demo, depois enviar o arquivo blog.sql criado.  </br>
+Neste arquivo temos só um teste bem simples, para ver se está funcionando o BD:
 
-```
-COLOCAR ENTRADA E SAIDA DO CONSOLE
+```sql
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: db
+-- Generation Time: Apr 22, 2023 at 01:56 AM
+-- Server version: 8.0.33
+-- PHP Version: 8.1.17
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `lamp_docker`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blog`
+--
+
+CREATE TABLE `blog` (
+  `id` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `title` text NOT NULL,
+  `content` text NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `blog`
+--
+
+INSERT INTO `blog` (`id`, `title`, `content`, `date`) VALUES
+(0000000001, 'Lorem Ipsum', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s', '2023-04-13'),
+(0000000002, 'Contrary to popular', 'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia,', '2023-04-12');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `blog`
+--
+ALTER TABLE `blog`
+  ADD PRIMARY KEY (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
 ```
 
 ################ DOCKER COMPOSE ########################
