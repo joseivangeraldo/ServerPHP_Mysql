@@ -158,12 +158,14 @@ username: lamp_demo  </br>
 password: password  </br>
 ![imagemPHPmYaDMIN](https://github.com/joseivangeraldo/ServerPHP_Mysql/blob/main/images/PaginaInicialPHPMyAdmin.png)
 
+<a id="acrescentareditar"></a>
 
+## 📁 Acrescentar e Editar arquivos
 Agora vamos colocar dados no nosso BD, e depois ver o retorno em uma pagina web.
 Vamos entrar no MySqlAdmin, com a senha e usuario passado anteriormente, entrar no banco lamp_demo, depois enviar o arquivo blog.sql criado.  </br>
 Neste arquivo temos só um teste bem simples, feito pelo texto padrão 'Lorem Ipsum', só para ver se está funcionando o BD:  </br>
 
-```sql blog.sql
+```sql
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
@@ -297,13 +299,6 @@ Após isto será exibido a mensagem que a porta 80 está sendo acionada. <br/>
 Ao clicar ou seguir a porta 80 será exibida pagina index.html, que foi criada anteriormente. <br/>
 ![Imagem Pagina Index.html](/images/pagina_funcionou.jpg) <br/>
 [Topo](#ancora)
-
-<a id="acrescentareditar"></a>
-
-## 📁 Acrescentar e Editar arquivos
-
-> Para acrescentar e editar arquivos no servidor, precisamos entrar no docker container.
-> Vamos acessar ele através de seu bash.Para isto utilizamos o comando 'exec' do docker.
 
 ```
  $ docker exec -it 1e936a216edd bash
