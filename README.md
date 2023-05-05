@@ -147,7 +147,9 @@ No menu acima, da janela do terminal, temos a opção ports, aonde temos as port
 | --------- | ---------- |
 |  80       | http       |
 |  443      | https      |
-|  8001     | phpMyAdmin |      |
+|  8001     | phpMyAdmin | 
+
+Clicando em Open In Browser nas porta 80 Apache:
 
 
 
