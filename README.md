@@ -161,8 +161,8 @@ password: password  </br>
 
 Agora vamos colocar dados no nosso BD, e depois ver o retorno em uma pagina web.
 Vamos entrar no MySqlAdmin, com a senha e usuario passado anteriormente, entrar no banco lamp_demo, depois enviar o arquivo blog.sql criado.  </br>
-Neste arquivo temos só um teste bem simples, para ver se está funcionando o BD:
-
+Neste arquivo temos só um teste bem simples, para ver se está funcionando o BD:  </br>
+blog.sql
 ```sql
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
