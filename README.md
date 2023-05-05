@@ -153,9 +153,9 @@ Clicando em Open In Browser nas porta 80 Apache:  </br>
 ![Imagem](https://github.com/joseivangeraldo/ServerPHP_Mysql/blob/main/images/PaginaInicialApache.png)
 
 
-Clicando agora na porta 8001 phpMyAdmin.
-username:lamp_demo
-password:password
+Clicando agora na porta 8001 phpMyAdmin.  </br>
+username:lamp_demo  </br>
+password:password  </br>
 ![imagem2](https://github.com/joseivangeraldo/ServerPHP_Mysql/blob/main/images/PaginaInicialPHPMyAdmin.png)
 
 
