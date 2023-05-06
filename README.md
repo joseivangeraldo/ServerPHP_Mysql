@@ -264,13 +264,24 @@ $ docker-compose start
 
 - se for preciso você pode deletar imagens e containers
 
-deletar Docker container
+deletar Docker container:
 ```
-$ rm nomecontainer
+$ rm ID_container
 ```
-Se der algum alerta tam de utilizar o force:
+
+Se der algum alerta tem de utilizar o force:
 ```
-$ rm -f nomecontainer
+$ rm -f ID_container
+```
+
+deletar imagens:
+```
+$ rmi nomeimagem
+```
+
+Se der algum alerta tem de utilizar o force:
+```
+$ rm -f nomeimagem
 ```
 
 😃 Boa Diversão!
