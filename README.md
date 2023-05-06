@@ -245,7 +245,7 @@ while($record = mysqli_fetch_assoc($result))
 ```
 Então entramos nesta pagina via link porta 80.
 
-🏮 Importante: 
+🔖 Importante: 
 Vai ser apresentado o erro, falando que a extensão mysqli não está presente, isto é contornado digitando dentro do diretório LampServer:
 ```
 $ docker-compose exec www docker-php-ext-install pdo pdo_mysql mysqli
