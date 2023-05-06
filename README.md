@@ -308,7 +308,7 @@ Você pode clonar este repositório:
 
 ```bash
 # Clone este repositório
-$ git clone <https://github.com/joseivangeraldo/html_css>
+$ git clone <https://github.com/joseivangeraldo/ServerPHP_Mysql>
 ```
 
 MIT License
