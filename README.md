@@ -16,9 +16,7 @@
 - [Tecnologia](#tecnologia)
 - [Instação do Ambiente](#instalacao)
 - [Acrescentar editar arquivos](#acrescentareditar)
-- [Mizukage](#ancora4)
-- [Raikage](#ancora5)
-- [Tsuchikage](#ancora)
+- [deletar docker](#deletar)
 
 ### <a id="tecnologia"> 🛠 Tecnologias</a>
 
@@ -261,4 +259,14 @@ $ docker-compose stop
 ```
 $ docker-compose start
 ```
+
+### <a id="deletar"> 🛠 Deletar imagens e containers</a>
+
+- se for preciso você pode deletar imagens e containers
+
+deletar Docker container
+```
+$ rm nomecontainer
+```
+
 😃 Boa Diversão!
