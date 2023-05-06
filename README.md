@@ -260,9 +260,9 @@ $ docker-compose stop
 $ docker-compose start
 ```
 
-### <a id="deletar"> 🛠 Deletar imagens e containers</a>
+### <a id="deletar"> ⚠️ Deletar imagens e containers</a>
 
-- ⚠️ se for preciso você pode deletar imagens e containers
+- se for preciso você pode deletar imagens e containers
 
 deletar Docker container:
 ```
@@ -283,7 +283,7 @@ Se der algum alerta tem de utilizar o force:
 ```
 $ rmi -f nomeimagem
 ```
-⚠️ Deletar, imagens, containers e volumes de uma vez, sequência:
+⚠️  Deletar, imagens, containers e volumes de uma vez, sequência:
  
  - Parar todas as instâncias:
 ```
