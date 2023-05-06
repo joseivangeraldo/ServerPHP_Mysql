@@ -283,5 +283,18 @@ Se der algum alerta tem de utilizar o force:
 ```
 $ rmi -f nomeimagem
 ```
+# Deletar, imagens, containers e volumes de uma vez, sequência:
+ 
+ - Parar todas as instâncias: 
+ docker stop $(docker ps -a -q) 
+  
+ - Remove todas as instâncias: 
+ docker rm $(docker ps -a -q) 
+  
+ - Remove todas as imagens: 
+ docker image rm $(docker image ls -a -q) 
+  
+ - Remove todos os volumes 
+ docker volume prune
 
 😃 Boa Diversão!
