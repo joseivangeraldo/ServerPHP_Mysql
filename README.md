@@ -268,5 +268,9 @@ deletar Docker container
 ```
 $ rm nomecontainer
 ```
+Se der algum alerta tam de utilizar o force:
+```
+$ rm -f nomecontainer
+```
 
 😃 Boa Diversão!
