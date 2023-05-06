@@ -281,7 +281,7 @@ $ rmi nomeimagem
 
 Se der algum alerta tem de utilizar o force:
 ```
-$ rm -f nomeimagem
+$ rmi -f nomeimagem
 ```
 
 😃 Boa Diversão!
