@@ -283,7 +283,7 @@ Se der algum alerta tem de utilizar o force:
 ```
 $ rmi -f nomeimagem
 ```
-⚠️  Deletar de uma vez sequência:
+⚠️  Deletar de uma vez :
  
  - Parar todas as instâncias:
 ```
