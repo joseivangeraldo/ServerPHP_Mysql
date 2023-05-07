@@ -283,7 +283,7 @@ Se der algum alerta tem de utilizar o force:
 ```
 $ rmi -f nomeimagem
 ```
-⚠️  Deletar, imagens, containers e volumes de uma vez, sequência:
+⚠️  Deletar de uma vez sequência:
  
  - Parar todas as instâncias:
 ```
@@ -307,8 +307,7 @@ $ rmi -f nomeimagem
 Você pode clonar este repositório:
 
 ```bash
-# Clone este repositório
-$ git clone <https://github.com/joseivangeraldo/ServerPHP_Mysql>
+# Clone este repositório$ g <https://github.com/joseivangeraldo/ServerPHP_Mysql>
 ```
 
 MIT License
